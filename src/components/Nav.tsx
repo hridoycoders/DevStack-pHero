@@ -7,11 +7,11 @@ const Nav = () => {
 
         {/* left logo  */}
         <div className="flex items-center">
-           <img src={Logo} alt="" />
+          <img src={Logo} alt="" />
         </div>
 
         {/* Center nav link */}
-         <ul className="hidden items-center gap-6 md:flex">
+        <ul className="hidden items-center gap-6 md:flex">
           <li><a href="#home" className="text-pink-500">Home</a></li>
           <li><a href="#technologies">Technologies</a></li>
           <li><a href="#projects">Projects</a></li>
@@ -20,7 +20,7 @@ const Nav = () => {
         </ul>
 
         {/* Right 2btn */}
-       <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4">
           <button className="text-sm">Sign In</button>
           <button className="rounded-full bg-pink-500 px-5 py-2 text-sm text-white"> Sign Up </button>
         </div>
