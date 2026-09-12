@@ -1,4 +1,4 @@
-import { use } from "react";
+import { use, useState } from "react";
 import TechnologyCard from "./TechnologyCard";
 
 interface Technology {
@@ -20,6 +20,8 @@ const TechnologySection = ({
   technologypromise,
 }: TechnologySectionProps) => {
   const technologies = use(technologypromise);
+  const [selectedTechnologies, setSelectedTechnologies] =
+    useState<Technology[]>([]);
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-16">
@@ -37,15 +39,30 @@ const TechnologySection = ({
             <TechnologyCard
               key={technology.id}
               technology={technology}
+              onAddToStack={(technology) => {
+                setSelectedTechnologies([...selectedTechnologies, technology]);
+              }}
             />
           ))}
         </div>
         {/* Stack sidebar */}
         <aside className="h-fit rounded-xl border border-slate-200 bg-white p-5">
           <h3 className="font-bold text-slate-900"> Your Stack </h3>
-          <p className="mt-1 text-xs text-slate-400"> 0 Technology Selected </p>
-          <div className="mt-5 rounded-lg border border-dashed border-slate-200 p-6 text-center text-xs text-slate-400">
-            Your stack is empty.
+          <p className="mt-1 text-xs text-slate-400"> {selectedTechnologies.length} Technology Selected </p>
+
+          <div className="mt-5 space-y-3"> {selectedTechnologies.length === 0 ? (
+            
+            <div className="rounded-lg border border-dashed border-slate-200 p-6 text-center text-xs text-slate-400">
+              Your stack is empty.
+            </div>
+          ) : (selectedTechnologies.map((technology) => (
+
+            <div key={technology.id} className="flex items-center gap-3 rounded-lg border border-slate-200 p-3">
+              <img className="h-8 w-8 object-contain" src={technology.icon} alt="" />
+              <span className="text-sm font-medium text-slate-700"> {technology.name} </span>
+            </div>
+          ))
+          )}
           </div>
         </aside>
       </div>

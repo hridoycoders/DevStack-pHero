@@ -11,9 +11,14 @@ interface Technology {
 
 interface TechnologyCardProps {
   technology: Technology;
+  onAddToStack: (technology: Technology) => void;
 }
 
-const TechnologyCard = ({ technology }: TechnologyCardProps) => {
+const TechnologyCard = ({
+  technology,
+  onAddToStack,
+}: TechnologyCardProps) => {
+
   return (
     <div className="grid grid-cols-3 gap-y-4 rounded-3xl border border-slate-100 bg-white p-6 shadow-sm">
       
@@ -31,7 +36,7 @@ const TechnologyCard = ({ technology }: TechnologyCardProps) => {
 
       <p className="col-span-1 justify-self-end text-sm font-semibold text-slate-800">⭐ {technology.rating}</p>
 
-      <button className="col-span-3 mt-2 w-full rounded-2xl bg-[#090D16] py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90">Add to Stack</button>
+      <button onClick={() => onAddToStack(technology)} className="col-span-3 mt-2 w-full rounded-2xl bg-[#090D16] py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90">Add to Stack</button>
     </div>
   );
 };
