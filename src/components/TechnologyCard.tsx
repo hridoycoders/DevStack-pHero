@@ -40,8 +40,8 @@ const TechnologyCard = ({
       <p className="col-span-1 justify-self-end text-sm font-semibold text-slate-800">⭐ {technology.rating}</p>
 
       <button onClick={() => onAddToStack(technology)}
-        className={`col-span-3 mt-2 w-full rounded-2xl bg-[#090D16] py-3.5 text-sm font-semibold transition-all duration-300
-           ${isAdded ? "text-[#EC4899] bg-slate-100" : "text-white hover:opacity-90"}`}>
+        className={`col-span-3 mt-2 w-full rounded-2xl brand-button py-3.5 text-sm font-semibold transition-all duration-300
+           ${isAdded ? "text-[#EC4899] added " : "text-white hover:opacity-90"}`}>
         {isAdded ? "✓ Added to Stack" : "Add to Stack"}
       </button>
     </div>

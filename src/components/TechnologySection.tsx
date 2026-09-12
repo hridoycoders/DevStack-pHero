@@ -1,5 +1,6 @@
 import { use, useState } from "react";
 import TechnologyCard from "./TechnologyCard";
+import { toast } from "react-toastify";
 
 interface Technology {
   id: string;
@@ -30,6 +31,7 @@ const TechnologySection = ({
         (technology) => technology.id !== id
       )
     );
+    toast.success("Technology removed from your stack!");
   };
   return (
     <section className="mx-auto max-w-7xl px-6 py-16">
@@ -52,11 +54,12 @@ const TechnologySection = ({
               onAddToStack={(technology) => {
                 const alreadyAdded = selectedTechnologies.some((item) => item.id === technology.id);
                 if (alreadyAdded) {
-                  alert("This technology is already in your stack!");
+                  toast.warning("This technology is already in your stack!");
                   return;
                 }
 
                 setSelectedTechnologies([...selectedTechnologies, technology]);
+                toast.success(`${technology.name} added to your stack!`);
               }}
             />
           ))}
@@ -86,7 +89,9 @@ const TechnologySection = ({
           ))
           )}
           </div>
-          <button onClick={() => setSelectedTechnologies([])}
+          <button onClick={() => { setSelectedTechnologies([]);
+            toast.success("All technologies removed from your stack!");
+          }}
             className="w-full rounded-xl border border-red-200 py-2.5 text-sm font-semibold text-red-500 hover:bg-red-50 transition-colors">
             Remove All
           </button>

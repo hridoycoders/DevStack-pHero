@@ -9,7 +9,7 @@ const Nav = () => {
         <div className="flex items-center gap-1">
           <img src={Logo} alt="" />
           <h2 className="text-lg font-bold text-gray-800">
-            Dev<span className="text-pink-500">Stack</span>
+            Dev<span className="brand-gradient">Stack</span>
           </h2>
         </div>
 

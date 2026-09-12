@@ -5,7 +5,7 @@ const Banner = () => {
             {/* litle text  */}
             <div>
                 <h1 className="text-4xl font-extrabold leading-tight text-slate-900 md:text-5xl"> Build Your Ideal <br />
-                    <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-violet-600 bg-clip-text text-transparent"> Development Stack </span>
+                    <span className="brand-gradient"> Development Stack </span>
                 </h1>
                 {/* paragrap */}
                 <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
@@ -14,7 +14,7 @@ const Banner = () => {
                 </p>
                 {/* 2Btn */}
                 <div className="mt-8 flex flex-wrap gap-3">
-                    <button className="rounded-md bg-gradient-to-r from-orange-500 via-pink-400 to-violet-500 px-5 py-3 text-sm font-medium text-white transition hover:opacity-90">
+                    <button className="rounded-md brand-button px-5 py-3 text-sm font-medium text-white transition hover:opacity-90">
                         Explore Technologies
                     </button>
 
