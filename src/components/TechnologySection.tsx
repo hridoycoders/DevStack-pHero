@@ -20,9 +20,17 @@ const TechnologySection = ({
   technologypromise,
 }: TechnologySectionProps) => {
   const technologies = use(technologypromise);
+
   const [selectedTechnologies, setSelectedTechnologies] =
     useState<Technology[]>([]);
 
+  const handleRemoveFromStack = (id: string) => {
+    setSelectedTechnologies(
+      selectedTechnologies.filter(
+        (technology) => technology.id !== id
+      )
+    );
+  };
   return (
     <section className="mx-auto max-w-7xl px-6 py-16">
       <div className="mb-8">
@@ -39,7 +47,15 @@ const TechnologySection = ({
             <TechnologyCard
               key={technology.id}
               technology={technology}
+              isAdded={selectedTechnologies.some((item) => item.id === technology.id)}
+
               onAddToStack={(technology) => {
+                const alreadyAdded = selectedTechnologies.some((item) => item.id === technology.id);
+                if (alreadyAdded) {
+                  alert("This technology is already in your stack!");
+                  return;
+                }
+
                 setSelectedTechnologies([...selectedTechnologies, technology]);
               }}
             />
@@ -48,10 +64,11 @@ const TechnologySection = ({
         {/* Stack sidebar */}
         <aside className="h-fit rounded-xl border border-slate-200 bg-white p-5">
           <h3 className="font-bold text-slate-900"> Your Stack </h3>
-          <p className="mt-1 text-xs text-slate-400"> {selectedTechnologies.length} Technology Selected </p>
+          <p className="mt-1 text-xs text-slate-400"> {selectedTechnologies.length === 0 ? "No Technology Selected"
+            : `${selectedTechnologies.length} Technology Selected`}</p>
 
           <div className="mt-5 space-y-3"> {selectedTechnologies.length === 0 ? (
-            
+
             <div className="rounded-lg border border-dashed border-slate-200 p-6 text-center text-xs text-slate-400">
               Your stack is empty.
             </div>
@@ -59,15 +76,25 @@ const TechnologySection = ({
 
             <div key={technology.id} className="flex items-center gap-3 rounded-lg border border-slate-200 p-3">
               <img className="h-8 w-8 object-contain" src={technology.icon} alt="" />
-              <span className="text-sm font-medium text-slate-700"> {technology.name} </span>
+
+              <div className="flex-1"> <p className="text-sm font-semibold text-slate-700"> {technology.name}</p>
+                <p className="text-xs text-slate-400">{technology.category}</p>
+              </div>
+
+              <button onClick={() => handleRemoveFromStack(technology.id)} className="text-slate-400 hover:text-red-500"> ✕ </button>
             </div>
           ))
           )}
           </div>
+          <button onClick={() => setSelectedTechnologies([])}
+            className="w-full rounded-xl border border-red-200 py-2.5 text-sm font-semibold text-red-500 hover:bg-red-50 transition-colors">
+            Remove All
+          </button>
         </aside>
       </div>
     </section>
   );
 };
+
 
 export default TechnologySection;
