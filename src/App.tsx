@@ -3,6 +3,7 @@ import Banner from "./components/Banner";
 import Nav from "./components/Nav";
 import TechnologySection from "./components/TechnologySection";
 import { ToastContainer } from "react-toastify";
+import Footer from "./components/Footer";
 
 const technologyFetch = async () => {
   const res = await fetch('/data.json')
@@ -19,6 +20,7 @@ function App() {
         <TechnologySection technologypromise={technologypromise} />
       </Suspense>
       <ToastContainer/>
+      <Footer/>
 
 
     </>
