@@ -5,20 +5,20 @@ const Footer = () => {
         <footer className="bg-[#0F172A] text-white">
             {/*Footer Section */}
             <div className="max-w-7xl mx-auto px-6 py-9 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-                <div className="space-y-5">
+                <div className="space-y-5 text-center md:text-left">
                     {/* Logo */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center justify-center md:justify-start gap-2">
                         <img src={Logo} alt="Dev Stack Logo" className="w-10 h-10" />
                         <h2 className="text-xl font-bold text-white"> Dev<span className="brand-gradient">Stack</span></h2>
                     </div>
                     {/* Description */}
-                    <p className="text-sm leading-6 text-slate-400 max-w-xs">
+                    <p className="text-sm leading-6 text-slate-400 max-w-xs mx-auto md:mx-0 text-center md:text-left">
                         Curated tools, technologies, and resources for developers building
                         modern software.
                     </p>
 
                     {/* Social Links */}
-                    <div className="flex items-center gap-5 text-sm text-slate-400">
+                    <div className="flex items-center justify-center md:justify-start gap-5 text-sm text-slate-400">
                         <a className="hover:text-white transition" href="https://github.com/hridoycoders">Github</a>
                         <a className="hover:text-white transition" href="https://www.linkedin.com/in/hridoy-ahmed1/">LinkedIn</a>
                         <a className="hover:text-white transition" href="https://www.facebook.com/HridoyAhmedNoor1/">Facebook</a>
@@ -26,7 +26,7 @@ const Footer = () => {
                 </div>
 
                 {/* Product Links */}
-                <div className="space-y-4">
+                <div className="hidden md:block space-y-4">
                     <h3 className="text-sm font-semibold tracking-wider text-white">PRODUCT</h3>
 
                     <div className="flex flex-col gap-3 text-sm text-slate-400">
@@ -38,7 +38,7 @@ const Footer = () => {
                 </div>
 
                 {/* Company Links */}
-                <div className="space-y-4">
+                <div className="hidden md:block space-y-4">
                     <h3 className="text-sm font-semibold tracking-wider text-white">COMPANY</h3>
 
                     <div className="flex flex-col gap-3 text-sm text-slate-400">
@@ -50,7 +50,7 @@ const Footer = () => {
                 </div>
 
                 {/* Legal Links */}
-                <div className="space-y-4">
+                <div className="hidden md:block space-y-4">
                     <h3 className="text-sm font-semibold tracking-wider text-white">LEGAL</h3>
 
                     <div className="flex flex-col gap-3 text-sm text-slate-400">
